@@ -393,3 +393,161 @@
     .about-grid, .skills-grid, .cert-grid, .coding-grid, .contact-grid { grid-template-columns:1fr; }
     .skill-category[style*="grid-column"] { grid-column:auto; }
   }
+  <style>
+/* Certification Card Styles */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.cert-card-link {
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card-link:hover {
+  transform: translateY(-6px);
+}
+
+.cert-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, currentColor 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.cert-card-link:hover .cert-card {
+  border-color: var(--text);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.cert-card-link:hover .cert-card::before {
+  opacity: 1;
+}
+
+.cert-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.cert-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.3s;
+}
+
+.cert-card-link:hover .cert-icon {
+  transform: scale(1.1);
+}
+
+.cert-badge-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cert-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.cert-issuer {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+}
+
+.cert-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.cert-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #10b981;
+  font-weight: 500;
+}
+
+.cert-status::before {
+  content: '✓';
+  display: inline-block;
+}
+
+.cert-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--muted);
+  font-size: 12px;
+  transition: all 0.3s;
+}
+
+.cert-card-link:hover .cert-arrow {
+  background: var(--accent);
+  color: white;
+  transform: translateX(2px) translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .cert-card {
+    padding: 1.5rem;
+  }
+}
+.hackerrank-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #2EC866; /* HackerRank green */
+  -webkit-mask: url("https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hackerrank.svg") no-repeat center;
+  mask: url("https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hackerrank.svg") no-repeat center;
+  mask-size: contain;
+}
